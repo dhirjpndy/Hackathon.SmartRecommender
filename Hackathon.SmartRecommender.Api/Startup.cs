@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Hackathon.SmartRecommender.Api.Extensions;
 using Hackathon.SmartRecommender.Api.Filters;
+using Hackathon.SmartRecommender.Api.Infrastructure;
 using Hackathon.SmartRecommender.Domain.Errors;
+using Hackathon.SmartRecommender.Domain.Infrastructure;
+using Hackathon.SmartRecommender.Providers.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,8 +39,11 @@ namespace Hackathon.SmartRecommender.Api
         {
             services.AddHealthChecks();
             AddApiVersioning(services);
+            services.EnableCors(Configuration);
             AddControllers(services);
             services.AddSwagger(Configuration);
+
+            RegisterBindings(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,6 +98,13 @@ namespace Hackathon.SmartRecommender.Api
                     };
                 };
             });
+        }
+
+        private void RegisterBindings(IServiceCollection services, IConfiguration configuration)
+        {
+            ApiBindings.Register(services, configuration);
+            DomainBindings.Register(services, configuration);
+            ProvidersBindings.Register(services, configuration);
         }
 
         private static void AddControllers(IServiceCollection services)

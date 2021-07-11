@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hackathon.SmartRecommender.Domain\Hackathon.SmartRecommender.Domain.csproj" />
+    <ProjectReference Include="..\Hackathon.SmartRecommender.Providers\Hackathon.SmartRecommender.Providers.csproj" />
   </ItemGroup>
 
 
