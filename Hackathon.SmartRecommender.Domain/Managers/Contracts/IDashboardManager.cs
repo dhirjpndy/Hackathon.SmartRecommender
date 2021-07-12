@@ -9,5 +9,6 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Contracts
     public interface IDashboardManager
     {
         Task<List<BusinessDetails>> GetBusinessesDetails();
+        Task<DashboardClassDetail> GetdashboardClassData(int studioId, DateTime startDateTime, DateTime endDateTime);
     }
 }

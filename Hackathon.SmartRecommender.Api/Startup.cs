@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConsumerMarketplace.AdminFlexTool.Data;
+using ConsumerMarketplace.AdminFlexTool.Data.Settings;
 using Hackathon.SmartRecommender.Api.Extensions;
 using Hackathon.SmartRecommender.Api.Filters;
 using Hackathon.SmartRecommender.Api.Infrastructure;
@@ -105,6 +107,20 @@ namespace Hackathon.SmartRecommender.Api
             ApiBindings.Register(services, configuration);
             DomainBindings.Register(services, configuration);
             ProvidersBindings.Register(services, configuration);
+            services.RegisterDataProviders();
+            //Legacy DB connection strings
+            var connectionStringSetting = new ConnectionStringsSettings
+            {
+                ConnectionStrings = configuration.GetSection("ConnectionStrings")
+                    .Get<Dictionary<string, string>>()
+            };
+            services.AddDataProvider(GetDataProviderSettings(), connectionStringSetting);
+        }
+
+        private DataProviderSettings GetDataProviderSettings()
+        {
+            var settingsSection = Configuration.GetSection("DataProviderSettings");
+            return settingsSection.Get<DataProviderSettings>();
         }
 
         private static void AddControllers(IServiceCollection services)

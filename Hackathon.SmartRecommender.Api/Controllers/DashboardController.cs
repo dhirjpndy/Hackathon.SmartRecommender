@@ -33,5 +33,18 @@ namespace Hackathon.SmartRecommender.Api.Controllers
             var result = await _DashboardManager.GetBusinessesDetails();
             return Ok(result);
         }
+
+        /// <summary>
+        /// Get Studios
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Studios/{studioId}")]
+        [ProducesResponseType(typeof(List<BusinessDetails>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<BusinessDetails>>> GetDashboardClassDetails(int studioId, DateTime startDateTime, DateTime endDateTime)
+        {
+            var result = await _DashboardManager.GetdashboardClassData(studioId, startDateTime, endDateTime);
+            return Ok(result);
+        }
     }
 }

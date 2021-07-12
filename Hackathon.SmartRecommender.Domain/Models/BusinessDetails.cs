@@ -9,8 +9,10 @@ namespace Hackathon.SmartRecommender.Domain.Models
     /// </summary>
     public class BusinessDetails
     {
-        public int BusinessId { get; set; }
+        public double BusinessId { get; set; }
 
         public string BusinessName { get; set; }
+
+        public string BusinessDescription { get; set; }
     }
 }

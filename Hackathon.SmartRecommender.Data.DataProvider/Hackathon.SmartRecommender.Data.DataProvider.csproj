@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\netstandard2.0\.NETStandard,Version=v2.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\netstandard2.0\Hackathon.SmartRecommender.Data.DataProvider.AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.deps.json" />
+    <Content Include="obj\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.csproj.nuget.dgspec.json" />
+    <Content Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Hackathon.SmartRecommender.Data.DataProvider.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.dll" />
+    <None Include="bin\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.pdb" />
+    <None Include="ConsumerMarketplace.AdminFlexTool.Data.DataProviders.csproj" />
+    <None Include="obj\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.csproj.nuget.g.props" />
+    <None Include="obj\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.csproj.nuget.g.targets" />
+    <None Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.assets.cache" />
+    <None Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.dll" />
+    <None Include="obj\Debug\netstandard2.0\ConsumerMarketplace.AdminFlexTool.Data.DataProviders.pdb" />
+    <None Include="obj\Debug\netstandard2.0\Hackathon.SmartRecommender.Data.DataProvider.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\netstandard2.0\Hackathon.SmartRecommender.Data.DataProvider.assets.cache" />
+    <None Include="obj\Hackathon.SmartRecommender.Data.DataProvider.csproj.nuget.g.props" />
+    <None Include="obj\Hackathon.SmartRecommender.Data.DataProvider.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+</Project>

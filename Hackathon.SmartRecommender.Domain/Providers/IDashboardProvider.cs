@@ -9,5 +9,9 @@ namespace Hackathon.SmartRecommender.Domain.Providers
     public interface IDashboardProvider
     {
         Task<List<BusinessDetails>> GetBusinessesDetails();
+
+        Task<List<ClassSchedulingDetails>> GetClassDetails(int studioId, DateTime startDateTime, DateTime endDateTime);
+
+        Task<int> GetTotalScheduledClasses(int studioId, DateTime? startDateTime, DateTime? endDateTime);
     }
 }
