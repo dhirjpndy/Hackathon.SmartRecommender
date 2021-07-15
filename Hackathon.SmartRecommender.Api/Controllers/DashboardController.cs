@@ -39,11 +39,17 @@ namespace Hackathon.SmartRecommender.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("Studios/{studioId}")]
-        [ProducesResponseType(typeof(List<BusinessDetails>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<BusinessDetails>>> GetDashboardClassDetails(int studioId, DateTime startDateTime, DateTime endDateTime)
+        [Route("Studios/{studioId}/ClassDetail")]
+        [ProducesResponseType(typeof(List<DashboardClassDetail>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<DashboardClassDetail>>> GetDashboardClassDetails(int studioId, DateTime? startDateTime, DateTime? endDateTime)
         {
-            var result = await _DashboardManager.GetdashboardClassData(studioId, startDateTime, endDateTime);
+            if (!startDateTime.HasValue)
+                startDateTime = new DateTime(2019, 01, 01);
+
+            if (!endDateTime.HasValue)
+                endDateTime = new DateTime(2019, 12, 31);
+
+            var result = await _DashboardManager.GetDashboardClassData(studioId, startDateTime.Value, endDateTime.Value);
             return Ok(result);
         }
     }

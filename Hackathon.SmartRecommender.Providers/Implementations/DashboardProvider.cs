@@ -31,7 +31,7 @@ namespace Hackathon.SmartRecommender.Providers.Implementations
         {
             var parameters = new List<SqlParameter>();
 
-            string sql = @" SELECT TOP(100) s.StudioID, s.StudioName
+            string sql = @" SELECT TOP(100) s.StudioID, s.StudioName, s.COUNTRYCODE, s.STATEPROVCODE, s.City
                             FROM Studios s 
                             WHERE Deleted = 0
                             ORDER BY StudioID DESC 
@@ -40,6 +40,25 @@ namespace Hackathon.SmartRecommender.Providers.Implementations
             using (var dataProvider = _dataProviderFactory.CreateForConnectionStringName("SmartRecommender"))
             {
                 var data = await dataProvider.ReadAsync(sql, MappingFunc, parameters);
+
+                return data.ToList();
+            }
+        }
+
+        public async Task<List<LocationDetails>> GetLocationDetails(List<double> StudioIds)
+        {
+            var parameters = new List<SqlParameter>();
+            parameters.Add(SqlParameterFactory.Create("@studioIds", SqlDbType.Int, StudioIds));
+
+            string sql = @" SELECT loc.StudioId, loc.LocationId, loc.LocationName, loc.CountryCode, loc.StateCode, loc.City
+                            FROM Locations loc
+                            WHERE StudioId in (@studioIds)
+                            ORDER BY StudioID DESC 
+                          ";
+
+            using (var dataProvider = _dataProviderFactory.CreateForConnectionStringName("SmartRecommender"))
+            {
+                var data = await dataProvider.ReadAsync(sql, MappingLocationFunc, parameters);
 
                 return data.ToList();
             }
@@ -133,10 +152,34 @@ namespace Hackathon.SmartRecommender.Providers.Implementations
             if (dataRow == null)
                 return new BusinessDetails();
 
-            var studioId = dataRow.GetValue<double>("StudioID");
-            var studioName = dataRow.GetValue<string>("StudioName");
-            var businessDescription = "";
-            return new BusinessDetails { BusinessId = studioId, BusinessName = studioName, BusinessDescription = businessDescription };
+            return new BusinessDetails
+            {
+                BusinessId = dataRow.GetValue<double>("StudioID"),
+                BusinessName = dataRow.GetValue<string>("StudioName"),
+                Country = dataRow.GetValue<string>("COUNTRYCODE"),
+                City = dataRow.GetValue<string>("City"),
+                State = dataRow.GetValue<string>("STATEPROVCODE")
+            };
+        }
+
+        /// <summary>
+        /// Mappings the function.
+        /// </summary>
+        /// <returns></returns>
+        private static LocationDetails MappingLocationFunc(IDataReader dataRow)
+        {
+            if (dataRow == null)
+                return new LocationDetails();
+
+            return new LocationDetails
+            {
+                BusinessId = dataRow.GetValue<double>("Studioid"),
+                LocationId = dataRow.GetValue<double>("LocationId"),
+                LocationName = dataRow.GetValue<string>("LocationName"),
+                Country = dataRow.GetValue<string>("COUNTRYCODE"),
+                City = dataRow.GetValue<string>("City"),
+                State = dataRow.GetValue<string>("StateCode")
+            };
         }
 
         /// <summary>

@@ -21,10 +21,17 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
 
         public async Task<List<BusinessDetails>> GetBusinessesDetails()
         {
-            return await _DashboardProvider.GetBusinessesDetails();
+            var businessDetails =  await _DashboardProvider.GetBusinessesDetails();
+            var sIds = businessDetails.Select(s => s.BusinessId).Distinct().ToList();
+
+            var locations = await _DashboardProvider.GetLocationDetails(sIds);
+
+            businessDetails.ForEach(b => b.LocationDetails = locations.Where(l => l.BusinessId == b.BusinessId).ToList());
+
+            return businessDetails;
         }
 
-        public async Task<DashboardClassDetail> GetdashboardClassData(int studioId, DateTime startDateTime, DateTime endDateTime)
+        public async Task<DashboardClassDetail> GetDashboardClassData(int studioId, DateTime startDateTime, DateTime endDateTime)
         {
             var response = new DashboardClassDetail();
             var classDetails = await _DashboardProvider.GetClassDetails(studioId, startDateTime, endDateTime);
@@ -39,6 +46,14 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
             response.TotalAttendees = totalBookedClasses;
             response.TotalLowPerformingClasses = lowPerformingClasses;
             response.TotalClasses = totalScheduledClassCount;
+            response.TotalEmptySlots = totalClassCapacity - totalBookedClasses;
+
+            response.TotalLossOfRevenue = -40000;
+            response.StaffUtilizaton = 55;
+            response.BusinessScore = new BusinessScore { Score = 3.4, TotalBusiness = 4 };
+
+            response.StaffDetails = new List<StaffDetails> { new StaffDetails { Name = "Jhon Tylor", Id = 1, StaffUtilization = 20, TotalRevenue = 100, TotalClasses = 3},
+            new StaffDetails { Name = "Ryan T", Id = 2, StaffUtilization = 40, TotalRevenue = 200, TotalClasses = 3}};
 
             return response;
         }

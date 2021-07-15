@@ -10,6 +10,8 @@ namespace Hackathon.SmartRecommender.Domain.Providers
     {
         Task<List<BusinessDetails>> GetBusinessesDetails();
 
+        Task<List<LocationDetails>> GetLocationDetails(List<double> StudioIds);
+
         Task<List<ClassSchedulingDetails>> GetClassDetails(int studioId, DateTime startDateTime, DateTime endDateTime);
 
         Task<int> GetTotalScheduledClasses(int studioId, DateTime? startDateTime, DateTime? endDateTime);
