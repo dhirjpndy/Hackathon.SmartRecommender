@@ -10,5 +10,7 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Contracts
     {
         Task<List<BusinessDetails>> GetBusinessesDetails();
         Task<DashboardClassDetail> GetDashboardClassData(int studioId, DateTime startDateTime, DateTime endDateTime);
+
+        Task<List<ServiceRecommendationDetails>> GetClassRecommenders(int studioId, DateTime startDateTime, DateTime endDateTime);
     }
 }

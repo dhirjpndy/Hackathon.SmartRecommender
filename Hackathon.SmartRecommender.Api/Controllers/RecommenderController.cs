@@ -27,8 +27,8 @@ namespace Hackathon.SmartRecommender.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("Studios/{studioId}")]
-        [ProducesResponseType(typeof(List<BusinessDetails>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<BusinessDetails>>> GetClassRecommender(int studioId, DateTime? startDateTime, DateTime? endDateTime)
+        [ProducesResponseType(typeof(List<ServiceRecommendationDetails>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<ServiceRecommendationDetails>>> GetClassRecommender(int studioId, DateTime? startDateTime, DateTime? endDateTime)
         {
             if (!startDateTime.HasValue)
                 startDateTime = new DateTime(2019, 01, 01);
@@ -36,7 +36,7 @@ namespace Hackathon.SmartRecommender.Api.Controllers
             if (!endDateTime.HasValue)
                 endDateTime = new DateTime(2019, 12, 31);
 
-            var result = await _DashboardManager.GetDashboardClassData(studioId, startDateTime.Value, endDateTime.Value);
+            var result = await _DashboardManager.GetClassRecommenders(studioId, startDateTime.Value, endDateTime.Value);
             return Ok(result);
         }
     }

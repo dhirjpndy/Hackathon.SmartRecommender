@@ -57,5 +57,10 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
 
             return response;
         }
+
+        public async Task<List<ServiceRecommendationDetails>> GetClassRecommenders(int studioId, DateTime startDateTime, DateTime endDateTime)
+        {
+            return await Task.FromResult(new List<ServiceRecommendationDetails>());
+        }
     }
 }
