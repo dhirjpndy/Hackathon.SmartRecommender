@@ -22,21 +22,28 @@ namespace Hackathon.SmartRecommender.Api.Controllers
         }
 
         /// <summary>
-        /// Get Studios
+        /// Get recommendations
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("Studios/{studioId}")]
-        [ProducesResponseType(typeof(List<ServiceRecommendationDetails>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<ServiceRecommendationDetails>>> GetClassRecommender(int studioId, DateTime? startDateTime, DateTime? endDateTime)
+        [ProducesResponseType(typeof(List<Recommendations>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<Recommendations>>> GetClassRecommender(int studioId)
         {
-            if (!startDateTime.HasValue)
-                startDateTime = new DateTime(2019, 01, 01);
+            var result = await _DashboardManager.GetClassRecommenders(studioId);
+            return Ok(result);
+        }
 
-            if (!endDateTime.HasValue)
-                endDateTime = new DateTime(2019, 12, 31);
-
-            var result = await _DashboardManager.GetClassRecommenders(studioId, startDateTime.Value, endDateTime.Value);
+        /// <summary>
+        /// Get Recommnedations in details
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("Studios/{studioId}/Configuration")]
+        [ProducesResponseType(typeof(List<ServiceRecommendationDetails>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<ServiceRecommendationDetails>>> GetClassRecommenderInDetails(int studioId)
+        {
+            var result = await _DashboardManager.GetClassRecommendersInDetails(studioId);
             return Ok(result);
         }
     }

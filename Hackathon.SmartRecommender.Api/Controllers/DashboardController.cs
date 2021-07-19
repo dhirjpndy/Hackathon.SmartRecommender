@@ -49,7 +49,7 @@ namespace Hackathon.SmartRecommender.Api.Controllers
             if (!endDateTime.HasValue)
                 endDateTime = new DateTime(2019, 12, 31);
 
-            var result = await _DashboardManager.GetDashboardClassData(studioId, startDateTime.Value, endDateTime.Value);
+            var result = await _DashboardManager.GetDashboardData(studioId, startDateTime.Value, endDateTime.Value);
             return Ok(result);
         }
     }

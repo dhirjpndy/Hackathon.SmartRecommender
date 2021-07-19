@@ -1,4 +1,5 @@
 ﻿using Hackathon.SmartRecommender.Domain.Providers;
+using Hackathon.SmartRecommender.Providers.FlaskAPI;
 using Hackathon.SmartRecommender.Providers.Implementations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ namespace Hackathon.SmartRecommender.Providers.Infrastructure
         {
             //Manager
             services.AddTransient<IDashboardProvider, DashboardProvider>();
+            services.AddTransient<IAIMLReccomenderApiProvider, AIMLReccomenderApiProvider>().AddHttpClient<IAIMLReccomenderApiProvider, AIMLReccomenderApiProvider>(); ;
         }
     }
 }

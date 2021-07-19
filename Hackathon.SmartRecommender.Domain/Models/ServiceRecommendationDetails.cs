@@ -4,21 +4,27 @@ using System.Text;
 
 namespace Hackathon.SmartRecommender.Domain.Models
 {
-    public class ServiceRecommendationDetails
+    public class Recommendations
     {
+        public int Rank { get; set; }
+
+        public double Price { get; set; }
         public string serviceType { get; set; }
 
         public int ServiceId { get; set; }
 
-        public DateTime ServiceStartDateTime { get; set; }
+        public TimeSpan ServiceStartDateTime { get; set; }
 
-        public DateTime ServiceEndDateTime { get; set; }
+        public TimeSpan ServiceEndDateTime { get; set; }
 
         public double Revenue { get; set; }
 
         public Days Day { get; set; }
 
         public double Capacity { get; set; }
+    }
+    public class ServiceRecommendationDetails : Recommendations
+    {
         public ScheduleFor ScheduleFor { get; set; }
 
         public double NewLeads { get; set; }
@@ -27,6 +33,11 @@ namespace Hackathon.SmartRecommender.Domain.Models
 
         public double StaffUtilization { get; set; }
 
+        public string StaffIncreaseInText { get; set; }
+
+        public StaffDetails Staff { get; set; }
+
+        public string OffersInPercenatge { get; set; }
     }
 
     public class ScheduleFor
