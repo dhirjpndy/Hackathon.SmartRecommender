@@ -25,14 +25,14 @@ namespace Hackathon.SmartRecommender.Api.Controllers
         /// Get Studios
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        [Route("Studios")]
-        [ProducesResponseType(typeof(List<BusinessDetails>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<BusinessDetails>>> GetStudios()
-        {
-            var result = await _DashboardManager.GetBusinessesDetails();
-            return Ok(result);
-        }
+        //[HttpGet]
+        //[Route("Studios")]
+        //[ProducesResponseType(typeof(List<BusinessDetails>), StatusCodes.Status200OK)]
+        //public async Task<ActionResult<List<BusinessDetails>>> GetStudios()
+        //{
+        //    var result = await _DashboardManager.GetBusinessesDetails();
+        //    return Ok(result);
+        //}
 
         /// <summary>
         /// Get Studios

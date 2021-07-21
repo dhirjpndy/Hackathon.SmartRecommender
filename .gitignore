@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Hackathon.SmartRecommender.Api/aws-beanstalk-tools-defaults.json

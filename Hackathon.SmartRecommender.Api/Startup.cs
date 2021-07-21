@@ -46,6 +46,8 @@ namespace Hackathon.SmartRecommender.Api
             services.AddSwagger(Configuration);
 
             RegisterBindings(services, Configuration);
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +60,8 @@ namespace Hackathon.SmartRecommender.Api
             }
 
             app.SetupSwagger(Configuration);
+
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
