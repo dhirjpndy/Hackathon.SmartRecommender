@@ -60,7 +60,7 @@ namespace Hackathon.SmartRecommender.Api
             }
 
             app.SetupSwagger(Configuration);
-
+            app.UseCors("SiteCorsPolicy");
             app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>

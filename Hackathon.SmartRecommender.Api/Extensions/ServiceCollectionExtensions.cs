@@ -32,8 +32,8 @@ namespace Hackathon.SmartRecommender.Api.Extensions
                     corsBuilder.AllowAnyHeader();
                     corsBuilder.AllowAnyOrigin();
                     corsBuilder.AllowAnyMethod();
-                    corsBuilder.AllowCredentials();
-                    corsBuilder.SetIsOriginAllowedToAllowWildcardSubdomains();
+                   // corsBuilder.AllowCredentials();
+                   // corsBuilder.SetIsOriginAllowedToAllowWildcardSubdomains();
                     //corsBuilder.WithOrigins(corsConfigurations.AllowedOrigins.ToArray());
                 });
             });
