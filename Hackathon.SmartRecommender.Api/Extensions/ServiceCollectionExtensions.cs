@@ -30,10 +30,11 @@ namespace Hackathon.SmartRecommender.Api.Extensions
                 options.AddPolicy("SiteCorsPolicy", corsBuilder =>
                 {
                     corsBuilder.AllowAnyHeader();
+                    corsBuilder.AllowAnyOrigin();
                     corsBuilder.AllowAnyMethod();
                     corsBuilder.AllowCredentials();
                     corsBuilder.SetIsOriginAllowedToAllowWildcardSubdomains();
-                    corsBuilder.WithOrigins(corsConfigurations.AllowedOrigins.ToArray());
+                    //corsBuilder.WithOrigins(corsConfigurations.AllowedOrigins.ToArray());
                 });
             });
 
