@@ -70,12 +70,12 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
                 TotalClassCapacity = 4000,
                 StaffUtilizaton = 55,
                 TotalLossOfRevenue = -65000,
-                BusinessScore = new BusinessScore { TotalBusiness = 10, Score = 7.2 },
+                BusinessScore = new BusinessScore { TotalBusiness = 100, Score = 76 },
                 StaffDetails = new List<StaffDetails>
                 {
                 new StaffDetails{ Name = "Alice watson", Id = 1,  StaffUtilization = 60, TotalRevenue = 1200, TotalClasses = 5},
                 new StaffDetails{ Name = "Brandon Smith", Id = 2,  StaffUtilization = 58, TotalRevenue = 975, TotalClasses = 3},
-                new StaffDetails{ Name = "John Wagon", Id = 3,  StaffUtilization = 42, TotalRevenue = 800, TotalClasses = 3}
+                new StaffDetails{ Name = "John Wagon", Id = 3,  StaffUtilization = 45, TotalRevenue = 800, TotalClasses = 3}
                 }
             };
         }
@@ -107,7 +107,7 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
                 //ServiceStartDateTime = aimlDto.Time_Slot_Start,
                 //ServiceEndDateTime = aimlDto.Time_Slot_End,
                 ServiceId = 12,
-                NewBusinessScore = new BusinessScore { TotalBusiness = 4, Score = 3.5 },
+                NewBusinessScore = new BusinessScore { TotalBusiness = 100, Score = 76 },
                 NewLeads = 20
             };
         }
@@ -127,7 +127,7 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
                     ScheduleFor = new ScheduleFor{Number = 30, MonthYear = "days" },
                     Staff = new StaffDetails{Name = "Alice Watson", Id = 1},
                     ServiceId = 1,
-                    NewBusinessScore = new BusinessScore { TotalBusiness = 10, Score = 7.5 },
+                    NewBusinessScore = new BusinessScore { TotalBusiness = 100, Score = 79 },
                     NewLeads = 13,
                     Revenue = 1000,
                     StaffUtilization = 68,
@@ -146,7 +146,7 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
                     ScheduleFor = new ScheduleFor{Number = 60, MonthYear = "days" },
                     Staff = new StaffDetails{Name = "Brandon Smith", Id = 2},
                     ServiceId = 2,
-                    NewBusinessScore = new BusinessScore { TotalBusiness = 10, Score = 7.4 },
+                    NewBusinessScore = new BusinessScore { TotalBusiness = 100, Score = 78 },
                     NewLeads = 11,
                     Revenue = 800,
                     StaffUtilization = 60,
@@ -165,7 +165,7 @@ namespace Hackathon.SmartRecommender.Domain.Managers.Implementations
                     ScheduleFor = new ScheduleFor{Number = 90, MonthYear = "days" },
                     Staff = new StaffDetails{Name = "John Wagon", Id = 3},
                     ServiceId = 3,
-                    NewBusinessScore = new BusinessScore { TotalBusiness = 10, Score = 7.3 },
+                    NewBusinessScore = new BusinessScore { TotalBusiness = 100, Score = 77 },
                     NewLeads = 8,
                     Revenue = 750,
                     StaffUtilization = 48,
